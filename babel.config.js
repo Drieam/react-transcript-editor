@@ -2,24 +2,21 @@
 // https://babeljs.io/docs/en/next/config-files#project-wide-configuration
 // https://stackoverflow.com/questions/52387820/babel7-jest-unexpected-token-export/52388264
 module.exports = {
-  presets: [
-    [
-      '@babel/preset-env', {
-        targets: { node: 'current' }
-      }
+    presets: [
+        [
+            '@babel/preset-env'
+        ],
+        '@babel/preset-react', [
+            'minify',
+            {
+                builtIns: false,
+                evaluate: false,
+                mangle: false
+            }
+        ]
     ],
-    '@babel/preset-react',
-    [
-      'minify',
-      {
-        builtIns: false,
-        evaluate: false,
-        mangle: false
-      }
+    plugins: [
+        '@babel/plugin-proposal-object-rest-spread',
+        '@babel/plugin-proposal-class-properties'
     ]
-  ],
-  plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-class-properties'
-  ]
 };
