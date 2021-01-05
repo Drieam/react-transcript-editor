@@ -6,6 +6,7 @@ import ibmToDraft from './ibm/index';
 import digitalPaperEditToDraft from './digital-paper-edit/index';
 import createEntityMap from './create-entity-map/index';
 import gcpSttToDraft from './google-stt/index';
+import vttToDraft from './vtt/index';
 
 /**
  * Adapters for STT conversion
@@ -48,6 +49,10 @@ const sttJsonAdapter = (transcriptData, sttJsonType) => {
 
     return { blocks, entityMap: createEntityMap(blocks) };
 
+  case 'vtt':
+    blocks = vttToDraft(transcriptData);
+
+    return { blocks, entityMap: createEntityMap(blocks) };
   default:
     // code block
     console.error('Did not recognize the stt engine.');

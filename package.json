@@ -52,6 +52,7 @@
     "draft-js": "^0.10.5",
     "everpolate": "0.0.3",
     "mousetrap": "1.5.2",
+    "node-webvtt": "^1.9.3",
     "number-to-words": "^1.2.4",
     "prop-types": "^15.6.2",
     "react-fast-compare": "^2.0.4",
