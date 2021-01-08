@@ -59,7 +59,7 @@ class App extends React.Component {
         sttType: "bbckaldi"
       });
     }
-   
+
   };
 
   // https://stackoverflow.com/questions/8885701/play-local-hard-drive-video-file-with-html5-video-tag
@@ -98,6 +98,18 @@ class App extends React.Component {
       fileReader.onload = event => {
         this.setState({
           transcriptData: JSON.parse(event.target.result)
+        });
+      };
+
+      fileReader.readAsText(file);
+    } else if (file.type === "text/vtt") {
+      const fileReader = new FileReader();
+
+      fileReader.onload = event => {
+        this.setState({
+          transcriptData: {
+            text: event.target.result
+          }
         });
       };
 
@@ -183,7 +195,7 @@ class App extends React.Component {
     console.log("handleAutoSaveChanges", newAutoSaveData);
     const { data, ext } = newAutoSaveData;
     this.setState({ autoSaveData: data, autoSaveExtension: ext });
-    // Saving to local storage 
+    // Saving to local storage
     localSave(this.state.mediaUrl, this.state.fileName, data);
   };
   render() {
